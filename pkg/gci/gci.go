@@ -139,7 +139,7 @@ func LoadFormat(in []byte, path string, cfg config.Config) (src, dist []byte, er
 
 	imports, headEnd, tailStart, cStart, cEnd, err := parse.ParseFile(src, path)
 	if err != nil {
-		if errors.Is(err, parse.NoImportError{}) {
+		if errors.Is(err, parse.NoImportError{}) || errors.Is(err, parse.CommentBetweenImportsError{}) {
 			return src, src, nil
 		}
 		return nil, nil, err

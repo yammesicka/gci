@@ -105,7 +105,7 @@ func TestRunWithLocalModule(t *testing.T) {
 					expected, err := os.ReadFile(strings.TrimSuffix(path, ".go") + ".out.go")
 					require.NoError(t, err)
 
-					_, got, err := LoadFormatGoFile(io.File{path}, *cfg)
+					_, got, err := LoadFormatGoFile(io.File{FilePath: path}, *cfg)
 
 					require.NoError(t, err)
 					require.Equal(t, string(expected), string(got))
