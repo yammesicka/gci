@@ -1,4 +1,4 @@
-module github.com/daixiang0/gci
+module github.com/yammesicka/gci
 
 go 1.24.0
 
