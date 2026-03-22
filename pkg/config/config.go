@@ -5,7 +5,7 @@ import (
 
 	"go.yaml.in/yaml/v3"
 
-	"github.com/daixiang0/gci/pkg/section"
+	"github.com/yammesicka/gci/pkg/section"
 )
 
 var defaultOrder = map[string]int{

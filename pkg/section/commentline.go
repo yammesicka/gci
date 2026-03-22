@@ -3,8 +3,8 @@ package section
 import (
 	"fmt"
 
-	"github.com/daixiang0/gci/pkg/parse"
-	"github.com/daixiang0/gci/pkg/specificity"
+	"github.com/yammesicka/gci/pkg/parse"
+	"github.com/yammesicka/gci/pkg/specificity"
 )
 
 type CommentLine struct {

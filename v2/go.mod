@@ -1,4 +1,4 @@
-module github.com/daixiang0/gci/v2
+module github.com/yammesicka/gci/v2
 
 go 1.21
 

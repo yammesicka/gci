@@ -7,7 +7,7 @@ type Cases struct {
 var commonConfig = `sections:
   - Standard
   - Default
-  - Prefix(github.com/daixiang0)
+  - Prefix(github.com/yammesicka)
 `
 
 var testCases = []Cases{
@@ -21,7 +21,7 @@ import (
 
 	g "github.com/golang"
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 )
 `,
 		`package main
@@ -31,7 +31,7 @@ import (
 
 	g "github.com/golang"
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 )
 `,
 	},
@@ -45,7 +45,7 @@ import (
   // comment
 	g  "github.com/golang"    // comment
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 )
 `,
 		`package main
@@ -56,7 +56,7 @@ import (
 	// comment
 	g "github.com/golang" // comment
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 )
 `,
 	},
@@ -90,7 +90,7 @@ import (
 import (
 	"fmt"
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 	g "github.com/golang"
 )
 
@@ -113,7 +113,7 @@ import (
 
 	g "github.com/golang"
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 )
 `,
 	},
@@ -131,7 +131,7 @@ import "C"
 import (
 	"fmt"
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 
 	g "github.com/golang"
 )
@@ -149,7 +149,7 @@ import (
 
 	g "github.com/golang"
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 )
 `,
 	},
@@ -269,7 +269,7 @@ import (
 import (
 	"fmt"
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 )
 
 import "C"
@@ -277,7 +277,7 @@ import "C"
 import "github.com/golang"
 
 import (
-  "github.com/daixiang0/gci"
+  "github.com/yammesicka/gci"
 )
 `,
 		`package main
@@ -289,7 +289,7 @@ import (
 
 	"github.com/golang"
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 )
 `,
 	},
@@ -319,7 +319,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 )
 `,
 		`package main
@@ -329,7 +329,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 )
 `,
 	},
@@ -338,7 +338,7 @@ import (
 		`sections:
   - Standard
   - Default
-  - Prefix(github.com/daixiang0)
+  - Prefix(github.com/yammesicka)
 `,
 		`package main
 
@@ -347,7 +347,7 @@ import (
 
 	g "github.com/golang"
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 )
 
 type test int
@@ -361,7 +361,7 @@ import (
 
 	g "github.com/golang"
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 )
 
 type test int
@@ -425,7 +425,7 @@ import (
 		"custom-order",
 		`customOrder: true
 sections:
-  - Prefix(github.com/daixiang0)
+  - Prefix(github.com/yammesicka)
   - Default
   - Standard
 `,
@@ -436,13 +436,13 @@ import (
 
 	g "github.com/golang"
 
-	"github.com/daixiang0/a"
+	"github.com/yammesicka/a"
 )
 `,
 		`package main
 
 import (
-	"github.com/daixiang0/a"
+	"github.com/yammesicka/a"
 
 	g "github.com/golang"
 
@@ -454,7 +454,7 @@ import (
 		"default-order",
 		`sections:
   - Standard
-  - Prefix(github.com/daixiang0)
+  - Prefix(github.com/yammesicka)
   - Default
 `,
 		`package main
@@ -464,7 +464,7 @@ import (
 
 	g "github.com/golang"
 
-	"github.com/daixiang0/a"
+	"github.com/yammesicka/a"
 )
 `,
 		`package main
@@ -474,7 +474,7 @@ import (
 
 	g "github.com/golang"
 
-	"github.com/daixiang0/a"
+	"github.com/yammesicka/a"
 )
 `,
 	},
@@ -483,7 +483,7 @@ import (
 		`sections:
   - Standard
   - Default
-  - Prefix(github.com/daixiang0)
+  - Prefix(github.com/yammesicka)
   - Blank
   - Dot
 `,
@@ -496,11 +496,11 @@ import (
 	. "github.com/golang/dot"
 	_ "github.com/golang/blank"
 
-	"github.com/daixiang0/a"
-	"github.com/daixiang0/gci"
-	"github.com/daixiang0/gci/subtest"
-	. "github.com/daixiang0/gci/dot"
-	_ "github.com/daixiang0/gci/blank"
+	"github.com/yammesicka/a"
+	"github.com/yammesicka/gci"
+	"github.com/yammesicka/gci/subtest"
+	. "github.com/yammesicka/gci/dot"
+	_ "github.com/yammesicka/gci/blank"
 )
 `,
 		`package main
@@ -510,14 +510,14 @@ import (
 
 	g "github.com/golang"
 
-	"github.com/daixiang0/a"
-	"github.com/daixiang0/gci"
-	"github.com/daixiang0/gci/subtest"
+	"github.com/yammesicka/a"
+	"github.com/yammesicka/gci"
+	"github.com/yammesicka/gci/subtest"
 
-	_ "github.com/daixiang0/gci/blank"
+	_ "github.com/yammesicka/gci/blank"
 	_ "github.com/golang/blank"
 
-	. "github.com/daixiang0/gci/dot"
+	. "github.com/yammesicka/gci/dot"
 	. "github.com/golang/dot"
 )
 `,
@@ -527,7 +527,7 @@ import (
 		`sections:
   - Standard
   - Default
-  - Prefix(github.com/daixiang0)
+  - Prefix(github.com/yammesicka)
 `,
 		`package main
 
@@ -536,8 +536,8 @@ import (
 
 	g "github.com/golang"
 
-	a "github.com/daixiang0/gci"
-	"github.com/daixiang0/gci"
+	a "github.com/yammesicka/gci"
+	"github.com/yammesicka/gci"
 )
 `,
 		`package main
@@ -547,8 +547,8 @@ import (
 
 	g "github.com/golang"
 
-	"github.com/daixiang0/gci"
-	a "github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
+	a "github.com/yammesicka/gci"
 )
 `,
 	},
@@ -557,17 +557,17 @@ import (
 		`sections:
   - Standard
   - Default
-  - Prefix(github.com/daixiang0,gitlab.com/daixiang0,daixiang0)
+  - Prefix(github.com/yammesicka,gitlab.com/yammesicka,yammesicka)
 `,
 		`package main
 
 import (
-	"daixiang0/lib1"
+	"yammesicka/lib1"
 	"fmt"
-	"github.com/daixiang0/gci"
-	"gitlab.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
+	"gitlab.com/yammesicka/gci"
 	g "github.com/golang"
-	"github.com/daixiang0/gci/subtest"
+	"github.com/yammesicka/gci/subtest"
 )
 `,
 		`package main
@@ -577,10 +577,10 @@ import (
 
 	g "github.com/golang"
 
-	"daixiang0/lib1"
-	"github.com/daixiang0/gci"
-	"github.com/daixiang0/gci/subtest"
-	"gitlab.com/daixiang0/gci"
+	"yammesicka/lib1"
+	"github.com/yammesicka/gci"
+	"github.com/yammesicka/gci/subtest"
+	"gitlab.com/yammesicka/gci"
 )
 `,
 	},
@@ -607,7 +607,7 @@ import (
 		`sections:
   - Standard
   - Default
-  - Prefix(github.com/daixiang0)
+  - Prefix(github.com/yammesicka)
 `,
 		`package main
 
@@ -616,7 +616,7 @@ import (
 
 	"fmt"
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 
 )
 `,
@@ -627,7 +627,7 @@ import (
 
 	g "github.com/golang"
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 )
 `,
 	},
@@ -636,7 +636,7 @@ import (
 		`sections:
   - Standard
   - Default
-  - Prefix(github.com/daixiang0)
+  - Prefix(github.com/yammesicka)
 `,
 		`package main
 
@@ -661,8 +661,8 @@ import (
 		`sections:
   - Standard
   - Default
-  - Prefix(github.com/daixiang0)
-  - Prefix(github.com/daixiang0/gci)
+  - Prefix(github.com/yammesicka)
+  - Prefix(github.com/yammesicka/gci)
 `,
 		`package main
 
@@ -671,7 +671,7 @@ import (
 
 	g "github.com/golang"
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 )
 `,
 		`package main
@@ -681,7 +681,7 @@ import (
 
 	g "github.com/golang"
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 )
 `,
 	},
@@ -690,9 +690,9 @@ import (
 		`sections:
   - Standard
   - Default
-  - Prefix(github.com/daixiang0)
-  - Prefix(github.com/daixiang0/gci)
-  - Prefix(github.com/daixiang0/gci/subtest)
+  - Prefix(github.com/yammesicka)
+  - Prefix(github.com/yammesicka/gci)
+  - Prefix(github.com/yammesicka/gci/subtest)
 `,
 		`package main
 
@@ -701,9 +701,9 @@ import (
 
 	g "github.com/golang"
 
-	"github.com/daixiang0/a"
-	"github.com/daixiang0/gci"
-	"github.com/daixiang0/gci/subtest"
+	"github.com/yammesicka/a"
+	"github.com/yammesicka/gci"
+	"github.com/yammesicka/gci/subtest"
 )
 `,
 		`package main
@@ -713,11 +713,11 @@ import (
 
 	g "github.com/golang"
 
-	"github.com/daixiang0/a"
+	"github.com/yammesicka/a"
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 
-	"github.com/daixiang0/gci/subtest"
+	"github.com/yammesicka/gci/subtest"
 )
 `,
 	},
@@ -733,7 +733,7 @@ import "context"
 import (
 	"os"
 
-	"github.com/daixiang0/test"
+	"github.com/yammesicka/test"
 )
 
 import "math"
@@ -751,7 +751,7 @@ import (
 	"math"
 	"os"
 
-	"github.com/daixiang0/test"
+	"github.com/yammesicka/test"
 )
 
 // main
@@ -820,7 +820,7 @@ import(
 
 g "github.com/golang"
 
-"github.com/daixiang0/gci"
+"github.com/yammesicka/gci"
 )
 `,
 		`package main
@@ -830,7 +830,7 @@ import (
 
 	g "github.com/golang"
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 )
 `,
 	},
@@ -844,7 +844,7 @@ import (
 
 	"github.com/forbidden/pkg" //nolint:depguard
 
-	_ "github.com/daixiang0/gci" //nolint:depguard
+	_ "github.com/yammesicka/gci" //nolint:depguard
 )
 `,
 		`package main
@@ -854,7 +854,7 @@ import (
 
 	"github.com/forbidden/pkg" //nolint:depguard
 
-	_ "github.com/daixiang0/gci" //nolint:depguard
+	_ "github.com/yammesicka/gci" //nolint:depguard
 )
 `,
 	},
@@ -868,7 +868,7 @@ import (
 
 	go_V1 "github.com/golang"
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 )
 `,
 		`package main
@@ -878,7 +878,7 @@ import (
 
 	go_V1 "github.com/golang"
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 )
 `,
 	},
@@ -925,7 +925,7 @@ func main() {
 		`sections:
   - Standard
   - Default
-  - Prefix(github.com/daixiang0)
+  - Prefix(github.com/yammesicka)
 `,
 		`package main
 
@@ -933,7 +933,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/daixiang0/test"
+	"github.com/yammesicka/test"
 )
 
 import "context"
@@ -945,7 +945,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/daixiang0/test"
+	"github.com/yammesicka/test"
 )
 `,
 	},
@@ -954,8 +954,8 @@ import (
 		`sections:
   - Standard
   - Default
-  - Prefix(github.com/daixiang0/gci)
-  - Prefix(github.com/daixiang0/gci/subtest)
+  - Prefix(github.com/yammesicka/gci)
+  - Prefix(github.com/yammesicka/gci/subtest)
 `,
 		`package main
 
@@ -964,8 +964,8 @@ import (
 
 	g "github.com/golang"
 
-	"github.com/daixiang0/gci"
-	"github.com/daixiang0/gci/subtest"
+	"github.com/yammesicka/gci"
+	"github.com/yammesicka/gci/subtest"
 )
 `,
 		`package main
@@ -975,41 +975,9 @@ import (
 
 	g "github.com/golang"
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 
-	"github.com/daixiang0/gci/subtest"
-)
-`,
-	},
-	{
-		"same-prefix-custom",
-		`sections:
-  - Standard
-  - Default
-  - Prefix(github.com/daixiang0/gci)
-  - Prefix(github.com/daixiang0/gci/subtest)
-`,
-		`package main
-
-import (
-	"fmt"
-
-	g "github.com/golang"
-
-	"github.com/daixiang0/gci"
-	"github.com/daixiang0/gci/subtest"
-)
-`,
-		`package main
-
-import (
-	"fmt"
-
-	g "github.com/golang"
-
-	"github.com/daixiang0/gci"
-
-	"github.com/daixiang0/gci/subtest"
+	"github.com/yammesicka/gci/subtest"
 )
 `,
 	},
@@ -1018,8 +986,8 @@ import (
 		`sections:
   - Standard
   - Default
-  - Prefix(github.com/daixiang0/gci)
-  - Prefix(github.com/daixiang0/gci/subtest)
+  - Prefix(github.com/yammesicka/gci)
+  - Prefix(github.com/yammesicka/gci/subtest)
 `,
 		`package main
 
@@ -1028,8 +996,8 @@ import (
 
 	g "github.com/golang"
 
-	"github.com/daixiang0/gci"
-	"github.com/daixiang0/gci/subtest"
+	"github.com/yammesicka/gci"
+	"github.com/yammesicka/gci/subtest"
 )
 `,
 		`package main
@@ -1039,9 +1007,41 @@ import (
 
 	g "github.com/golang"
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 
-	"github.com/daixiang0/gci/subtest"
+	"github.com/yammesicka/gci/subtest"
+)
+`,
+	},
+	{
+		"same-prefix-custom",
+		`sections:
+  - Standard
+  - Default
+  - Prefix(github.com/yammesicka/gci)
+  - Prefix(github.com/yammesicka/gci/subtest)
+`,
+		`package main
+
+import (
+	"fmt"
+
+	g "github.com/golang"
+
+	"github.com/yammesicka/gci"
+	"github.com/yammesicka/gci/subtest"
+)
+`,
+		`package main
+
+import (
+	"fmt"
+
+	g "github.com/golang"
+
+	"github.com/yammesicka/gci"
+
+	"github.com/yammesicka/gci/subtest"
 )
 `,
 	},
@@ -1055,7 +1055,7 @@ import (
 
 	"fmt"
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 )
 `,
 		`package main
@@ -1065,7 +1065,7 @@ import (
 
 	"golang.org/x/tools"
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 )
 `,
 	},
@@ -1077,7 +1077,7 @@ import (
 import (
 	"fmt"
 	"github.com/golang" // golang
-	alias "github.com/daixiang0/gci"
+	alias "github.com/yammesicka/gci"
 )
 `,
 		`package main
@@ -1087,7 +1087,7 @@ import (
 
 	"github.com/golang" // golang
 
-	alias "github.com/daixiang0/gci"
+	alias "github.com/yammesicka/gci"
 )
 `,
 	},
@@ -1100,7 +1100,7 @@ import (
 	"fmt"
 	// golang
 	_ "github.com/golang"
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 )
 `,
 		`package main
@@ -1111,7 +1111,7 @@ import (
 	// golang
 	_ "github.com/golang"
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 )
 `,
 	},
@@ -1123,7 +1123,7 @@ import (
 import (
 	"fmt"
 	_ "github.com/golang" // golang
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 )
 `,
 		`package main
@@ -1133,7 +1133,7 @@ import (
 
 	_ "github.com/golang" // golang
 
-	"github.com/daixiang0/gci"
+	"github.com/yammesicka/gci"
 )
 `,
 	},
@@ -1142,7 +1142,7 @@ import (
 		`sections:
   - Standard
   - Default
-  - Prefix(  github.com/daixiang0/gci,   github.com/daixiang0/gci/subtest  )
+  - Prefix(  github.com/yammesicka/gci,   github.com/yammesicka/gci/subtest  )
 `,
 		`package main
 
@@ -1151,8 +1151,8 @@ import (
 
 	g "github.com/golang"
 
-	"github.com/daixiang0/gci"
-	"github.com/daixiang0/gci/subtest"
+	"github.com/yammesicka/gci"
+	"github.com/yammesicka/gci/subtest"
 )
 `,
 		`package main
@@ -1162,8 +1162,8 @@ import (
 
 	g "github.com/golang"
 
-	"github.com/daixiang0/gci"
-	"github.com/daixiang0/gci/subtest"
+	"github.com/yammesicka/gci"
+	"github.com/yammesicka/gci/subtest"
 )
 `,
 	},
@@ -1177,13 +1177,13 @@ import (
 		`package main
 
 import (
-	testing "github.com/daixiang0/test"
+	testing "github.com/yammesicka/test"
 	"fmt"
 
 	g "github.com/golang"
 
-	"github.com/daixiang0/gci"
-	"github.com/daixiang0/gci/subtest"
+	"github.com/yammesicka/gci"
+	"github.com/yammesicka/gci/subtest"
 )
 `,
 		`package main
@@ -1191,10 +1191,10 @@ import (
 import (
 	"fmt"
 
-	"github.com/daixiang0/gci"
-	"github.com/daixiang0/gci/subtest"
+	"github.com/yammesicka/gci"
+	"github.com/yammesicka/gci/subtest"
 
-	testing "github.com/daixiang0/test"
+	testing "github.com/yammesicka/test"
 	g "github.com/golang"
 )
 `,

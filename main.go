@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/daixiang0/gci/cmd/gci"
+	"github.com/yammesicka/gci/cmd/gci"
 )
 
 var version = "0.14.0"

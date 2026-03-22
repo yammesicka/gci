@@ -4,8 +4,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/daixiang0/gci/pkg/parse"
-	"github.com/daixiang0/gci/pkg/utils"
+	"github.com/yammesicka/gci/pkg/parse"
+	"github.com/yammesicka/gci/pkg/utils"
 )
 
 type SectionParsingError struct {

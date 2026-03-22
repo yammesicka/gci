@@ -7,7 +7,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/daixiang0/gci/pkg/specificity"
+	"github.com/yammesicka/gci/pkg/specificity"
 )
 
 func TestLocalModule_specificity(t *testing.T) {

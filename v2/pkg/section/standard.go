@@ -1,8 +1,8 @@
 package section
 
 import (
-	"github.com/daixiang0/gci/v2/pkg/parse"
-	"github.com/daixiang0/gci/v2/pkg/specificity"
+	"github.com/yammesicka/gci/v2/pkg/parse"
+	"github.com/yammesicka/gci/v2/pkg/specificity"
 )
 
 const StandardType = "standard"

@@ -8,9 +8,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/daixiang0/gci/v2/pkg/config"
-	gciParse "github.com/daixiang0/gci/v2/pkg/parse"
-	"github.com/daixiang0/gci/v2/pkg/specificity"
+	"github.com/yammesicka/gci/v2/pkg/config"
+	gciParse "github.com/yammesicka/gci/v2/pkg/parse"
+	"github.com/yammesicka/gci/v2/pkg/specificity"
 )
 
 func sortImports(cfg *config.Config, tokFile *token.File, f *ast.File) {

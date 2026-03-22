@@ -3,11 +3,11 @@ package format
 import (
 	"fmt"
 
-	"github.com/daixiang0/gci/pkg/config"
-	"github.com/daixiang0/gci/pkg/log"
-	"github.com/daixiang0/gci/pkg/parse"
-	"github.com/daixiang0/gci/pkg/section"
-	"github.com/daixiang0/gci/pkg/specificity"
+	"github.com/yammesicka/gci/pkg/config"
+	"github.com/yammesicka/gci/pkg/log"
+	"github.com/yammesicka/gci/pkg/parse"
+	"github.com/yammesicka/gci/pkg/section"
+	"github.com/yammesicka/gci/pkg/specificity"
 )
 
 type Block struct {

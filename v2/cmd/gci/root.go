@@ -6,8 +6,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/daixiang0/gci/v2/pkg/config"
-	"github.com/daixiang0/gci/v2/pkg/section"
+	"github.com/yammesicka/gci/v2/pkg/config"
+	"github.com/yammesicka/gci/v2/pkg/section"
 )
 
 var (

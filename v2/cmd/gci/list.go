@@ -3,7 +3,7 @@ package gci
 import (
 	"github.com/spf13/cobra"
 
-	"github.com/daixiang0/gci/v2/pkg/gci"
+	"github.com/yammesicka/gci/v2/pkg/gci"
 )
 
 var listCmd = &cobra.Command{

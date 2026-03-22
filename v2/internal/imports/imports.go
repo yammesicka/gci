@@ -15,7 +15,7 @@ import (
 
 	"golang.org/x/tools/go/ast/astutil"
 
-	"github.com/daixiang0/gci/v2/pkg/config"
+	"github.com/yammesicka/gci/v2/pkg/config"
 )
 
 type Options struct {

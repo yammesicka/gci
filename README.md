@@ -23,7 +23,7 @@ import (
   // those lines belong to one
   // isolated comment blocks
 
-  "github.com/daixiang0/gci"
+  "github.com/yammesicka/gci"
 )
 ```
 
@@ -62,13 +62,13 @@ in *the directory where `gci` is invoked*. This means:
 To download and install the highest available release version -
 
 ```shell
-go install github.com/daixiang0/gci@latest
+go install github.com/yammesicka/gci@latest
 ```
 
 You may also specify a specific version, for example:
 
 ```shell
-go install github.com/daixiang0/gci@v0.11.2
+go install github.com/yammesicka/gci@v0.11.2
 ```
 
 ## Usage
@@ -101,7 +101,7 @@ Flags:
   -h, --help                  help for print
   -s, --section stringArray   Sections define how inputs will be processed. Section names are case-insensitive and may contain parameters in (). The section order is standard > default > custom > blank > dot > alias > localmodule. The default value is [standard,default].
                               standard - standard section that Go provides officially, like "fmt"
-                              Prefix(github.com/daixiang0) - custom section, groups all imports with the specified Prefix. Imports will be matched to the longest Prefix. Multiple custom prefixes may be provided, they will be rendered as distinct sections separated by newline. You can regroup multiple prefixes by separating them with comma: Prefix(github.com/daixiang0,gitlab.com/daixiang0,daixiang0)
+                              Prefix(github.com/yammesicka) - custom section, groups all imports with the specified Prefix. Imports will be matched to the longest Prefix. Multiple custom prefixes may be provided, they will be rendered as distinct sections separated by newline. You can regroup multiple prefixes by separating them with comma: Prefix(github.com/yammesicka,gitlab.com/yammesicka,yammesicka)
                               default - default section, contains all rest imports
                               blank - blank section, contains all blank imports.
                               dot - dot section, contains all dot imports. (default [standard,default])
@@ -127,7 +127,7 @@ Flags:
   -h, --help                  help for write
   -s, --section stringArray   Sections define how inputs will be processed. Section names are case-insensitive and may contain parameters in (). The section order is standard > default > custom > blank > dot > alias > localmodule. The default value is [standard,default].
                               standard - standard section that Go provides officially, like "fmt"
-                              Prefix(github.com/daixiang0) - custom section, groups all imports with the specified Prefix. Imports will be matched to the longest Prefix. Multiple custom prefixes may be provided, they will be rendered as distinct sections separated by newline. You can regroup multiple prefixes by separating them with comma: Prefix(github.com/daixiang0,gitlab.com/daixiang0,daixiang0)
+                              Prefix(github.com/yammesicka) - custom section, groups all imports with the specified Prefix. Imports will be matched to the longest Prefix. Multiple custom prefixes may be provided, they will be rendered as distinct sections separated by newline. You can regroup multiple prefixes by separating them with comma: Prefix(github.com/yammesicka,gitlab.com/yammesicka,yammesicka)
                               default - default section, contains all rest imports
                               blank - blank section, contains all blank imports.
                               dot - dot section, contains all dot imports. (default [standard,default])
@@ -150,7 +150,7 @@ Flags:
   -h, --help                  help for list
   -s, --section stringArray   Sections define how inputs will be processed. Section names are case-insensitive and may contain parameters in (). The section order is standard > default > custom > blank > dot > alias > localmodule. The default value is [standard,default].
                               standard - standard section that Go provides officially, like "fmt"
-                              Prefix(github.com/daixiang0) - custom section, groups all imports with the specified Prefix. Imports will be matched to the longest Prefix. Multiple custom prefixes may be provided, they will be rendered as distinct sections separated by newline. You can regroup multiple prefixes by separating them with comma: Prefix(github.com/daixiang0,gitlab.com/daixiang0,daixiang0)
+                              Prefix(github.com/yammesicka) - custom section, groups all imports with the specified Prefix. Imports will be matched to the longest Prefix. Multiple custom prefixes may be provided, they will be rendered as distinct sections separated by newline. You can regroup multiple prefixes by separating them with comma: Prefix(github.com/yammesicka,gitlab.com/yammesicka,yammesicka)
                               default - default section, contains all rest imports
                               blank - blank section, contains all blank imports.
                               dot - dot section, contains all dot imports. (default [standard,default])
@@ -173,7 +173,7 @@ Flags:
   -h, --help                  help for diff
   -s, --section stringArray   Sections define how inputs will be processed. Section names are case-insensitive and may contain parameters in (). The section order is standard > default > custom > blank > dot > alias > localmodule. The default value is [standard,default].
                               standard - standard section that Go provides officially, like "fmt"
-                              Prefix(github.com/daixiang0) - custom section, groups all imports with the specified Prefix. Imports will be matched to the longest Prefix. Multiple custom prefixes may be provided, they will be rendered as distinct sections separated by newline. You can regroup multiple prefixes by separating them with comma: Prefix(github.com/daixiang0,gitlab.com/daixiang0,daixiang0)
+                              Prefix(github.com/yammesicka) - custom section, groups all imports with the specified Prefix. Imports will be matched to the longest Prefix. Multiple custom prefixes may be provided, they will be rendered as distinct sections separated by newline. You can regroup multiple prefixes by separating them with comma: Prefix(github.com/yammesicka,gitlab.com/yammesicka,yammesicka)
                               default - default section, contains all rest imports
                               blank - blank section, contains all blank imports.
                               dot - dot section, contains all dot imports. (default [standard,default])
@@ -217,7 +217,7 @@ The old style is only for local tests, will be deprecated, please uses new style
 
 ## Examples
 
-Run `gci write -s standard -s default -s "prefix(github.com/daixiang0/gci)" main.go` and you will handle following cases:
+Run `gci write -s standard -s default -s "prefix(github.com/yammesicka/gci)" main.go` and you will handle following cases:
 
 ### simple case
 
@@ -228,7 +228,7 @@ import (
 
   "fmt"
 
-  "github.com/daixiang0/gci"
+  "github.com/yammesicka/gci"
 )
 ```
 
@@ -241,7 +241,7 @@ import (
 
     "golang.org/x/tools"
 
-    "github.com/daixiang0/gci"
+    "github.com/yammesicka/gci"
 )
 ```
 
@@ -252,7 +252,7 @@ package main
 import (
   "fmt"
   go "github.com/golang"
-  "github.com/daixiang0/gci"
+  "github.com/yammesicka/gci"
 )
 ```
 
@@ -265,7 +265,7 @@ import (
 
   go "github.com/golang"
 
-  "github.com/daixiang0/gci"
+  "github.com/yammesicka/gci"
 )
 ```
 
@@ -278,9 +278,9 @@ import (
   go "github.com/golang"
   _ "github.com/golang/blank"
   . "github.com/golang/dot"
-  "github.com/daixiang0/gci"
-  _ "github.com/daixiang0/gci/blank"
-  . "github.com/daixiang0/gci/dot"
+  "github.com/yammesicka/gci"
+  _ "github.com/yammesicka/gci/blank"
+  . "github.com/yammesicka/gci/dot"
 )
 ```
 
@@ -293,12 +293,12 @@ import (
 
   go "github.com/golang"
 
-  "github.com/daixiang0/gci"
+  "github.com/yammesicka/gci"
 
-  _ "github.com/daixiang0/gci/blank"
+  _ "github.com/yammesicka/gci/blank"
   _ "github.com/golang/blank"
 
-  . "github.com/daixiang0/gci/dot"
+  . "github.com/yammesicka/gci/dot"
   . "github.com/golang/dot"
 )
 ```
@@ -309,13 +309,13 @@ import (
 package main
 
 import (
-	testing "github.com/daixiang0/test"
+	testing "github.com/yammesicka/test"
 	"fmt"
 
 	g "github.com/golang"
 
-	"github.com/daixiang0/gci"
-	"github.com/daixiang0/gci/subtest"
+	"github.com/yammesicka/gci"
+	"github.com/yammesicka/gci/subtest"
 )
 ```
 
@@ -327,10 +327,10 @@ package main
 import (
 	"fmt"
 
-	"github.com/daixiang0/gci"
-	"github.com/daixiang0/gci/subtest"
+	"github.com/yammesicka/gci"
+	"github.com/yammesicka/gci/subtest"
 
-	testing "github.com/daixiang0/test"
+	testing "github.com/yammesicka/test"
 	g "github.com/golang"
 )
 ```
@@ -338,14 +338,14 @@ import (
 ### with localmodule grouping enabled
 
 Assuming this is run on the root of this repo (i.e. where
-`github.com/daixiang0/gci` is a local module)
+`github.com/yammesicka/gci` is a local module)
 
 ```go
 package main
 
 import (
 	"os"
-	"github.com/daixiang0/gci/cmd/gci"
+	"github.com/yammesicka/gci/cmd/gci"
 )
 ```
 
@@ -357,7 +357,7 @@ package main
 import (
 	"os"
 
-	"github.com/daixiang0/gci/cmd/gci"
+	"github.com/yammesicka/gci/cmd/gci"
 )
 ```
 

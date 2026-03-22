@@ -4,9 +4,9 @@ import (
 	"github.com/spf13/cobra"
 	"go.uber.org/zap/zapcore"
 
-	"github.com/daixiang0/gci/pkg/config"
-	"github.com/daixiang0/gci/pkg/log"
-	"github.com/daixiang0/gci/pkg/section"
+	"github.com/yammesicka/gci/pkg/config"
+	"github.com/yammesicka/gci/pkg/log"
+	"github.com/yammesicka/gci/pkg/section"
 )
 
 type processingFunc = func(args []string, gciCfg config.Config) error
@@ -51,7 +51,7 @@ func (e *Executor) newGciCommand(use, short, long string, aliases []string, stdI
 
 	sectionHelp := `Sections define how inputs will be processed. Section names are case-insensitive and may contain parameters in (). The section order is standard > default > custom > blank > dot > alias > localmodule. The default value is [standard,default].
 standard - standard section that Go provides officially, like "fmt"
-Prefix(github.com/daixiang0) - custom section, groups all imports with the specified Prefix. Imports will be matched to the longest Prefix. Multiple custom prefixes may be provided, they will be rendered as distinct sections separated by newline. You can regroup multiple prefixes by separating them with comma: Prefix(github.com/daixiang0,gitlab.com/daixiang0,daixiang0)
+Prefix(github.com/yammesicka) - custom section, groups all imports with the specified Prefix. Imports will be matched to the longest Prefix. Multiple custom prefixes may be provided, they will be rendered as distinct sections separated by newline. You can regroup multiple prefixes by separating them with comma: Prefix(github.com/yammesicka,gitlab.com/yammesicka,yammesicka)
 default - default section, contains all rest imports
 blank - blank section, contains all blank imports.
 dot - dot section, contains all dot imports.

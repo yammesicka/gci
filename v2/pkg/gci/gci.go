@@ -9,9 +9,9 @@ import (
 
 	"golang.org/x/sync/errgroup"
 
-	"github.com/daixiang0/gci/v2/internal/imports"
-	"github.com/daixiang0/gci/v2/pkg/config"
-	"github.com/daixiang0/gci/v2/pkg/parse"
+	"github.com/yammesicka/gci/v2/internal/imports"
+	"github.com/yammesicka/gci/v2/pkg/config"
+	"github.com/yammesicka/gci/v2/pkg/parse"
 )
 
 func PrintFormattedFiles(paths []string, cfg config.Config) error {

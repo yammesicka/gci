@@ -13,13 +13,13 @@ import (
 	"github.com/hexops/gotextdiff/span"
 	"golang.org/x/sync/errgroup"
 
-	"github.com/daixiang0/gci/pkg/config"
-	"github.com/daixiang0/gci/pkg/format"
-	"github.com/daixiang0/gci/pkg/io"
-	"github.com/daixiang0/gci/pkg/log"
-	"github.com/daixiang0/gci/pkg/parse"
-	"github.com/daixiang0/gci/pkg/section"
-	"github.com/daixiang0/gci/pkg/utils"
+	"github.com/yammesicka/gci/pkg/config"
+	"github.com/yammesicka/gci/pkg/format"
+	"github.com/yammesicka/gci/pkg/io"
+	"github.com/yammesicka/gci/pkg/log"
+	"github.com/yammesicka/gci/pkg/parse"
+	"github.com/yammesicka/gci/pkg/section"
+	"github.com/yammesicka/gci/pkg/utils"
 )
 
 func LocalFlagsToSections(localFlags []string) section.SectionList {

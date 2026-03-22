@@ -3,7 +3,7 @@ package section
 import (
 	"testing"
 
-	"github.com/daixiang0/gci/v2/pkg/specificity"
+	"github.com/yammesicka/gci/v2/pkg/specificity"
 )
 
 func TestNewLineSpecificity(t *testing.T) {

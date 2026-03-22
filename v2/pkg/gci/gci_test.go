@@ -7,9 +7,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/daixiang0/gci/v2/pkg/config"
-	"github.com/daixiang0/gci/v2/pkg/parse"
-	"github.com/daixiang0/gci/v2/pkg/section"
+	"github.com/yammesicka/gci/v2/pkg/config"
+	"github.com/yammesicka/gci/v2/pkg/parse"
+	"github.com/yammesicka/gci/v2/pkg/section"
 )
 
 func TestRun(t *testing.T) {

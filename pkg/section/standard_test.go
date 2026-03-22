@@ -3,7 +3,7 @@ package section
 import (
 	"testing"
 
-	"github.com/daixiang0/gci/pkg/specificity"
+	"github.com/yammesicka/gci/pkg/specificity"
 )
 
 func TestStandardPackageSpecificity(t *testing.T) {
