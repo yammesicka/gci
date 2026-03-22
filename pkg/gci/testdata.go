@@ -1295,4 +1295,369 @@ import (
 )
 `,
 	},
+	{
+		"standalone-comment-single-line-middle",
+
+		`sections:
+  - Standard
+  - Default
+`,
+		`package main
+
+import (
+	"fmt"
+
+	// Third-party imports
+	"github.com/some/pkg"
+)
+`,
+		`package main
+
+import (
+	"fmt"
+
+	// Third-party imports
+	"github.com/some/pkg"
+)
+`,
+	},
+	{
+		"standalone-comment-single-line-start",
+
+		`sections:
+  - Standard
+  - Default
+`,
+		`package main
+
+import (
+	// All imports for this file
+	"fmt"
+
+	"github.com/some/pkg"
+)
+`,
+		`package main
+
+import (
+	// All imports for this file
+	"fmt"
+
+	"github.com/some/pkg"
+)
+`,
+	},
+	{
+		"standalone-comment-single-line-end",
+
+		`sections:
+  - Standard
+  - Default
+`,
+		`package main
+
+import (
+	"fmt"
+
+	"github.com/some/pkg"
+	// end of imports
+)
+`,
+		`package main
+
+import (
+	"fmt"
+
+	"github.com/some/pkg"
+	// end of imports
+)
+`,
+	},
+	{
+		"standalone-comment-block-single-line",
+
+		`sections:
+  - Standard
+  - Default
+`,
+		`package main
+
+import (
+	"fmt"
+
+	/* Third-party packages */
+	"github.com/some/pkg"
+)
+`,
+		`package main
+
+import (
+	"fmt"
+
+	/* Third-party packages */
+	"github.com/some/pkg"
+)
+`,
+	},
+	{
+		"standalone-comment-block-multiline",
+
+		`sections:
+  - Standard
+  - Default
+`,
+		`package main
+
+import (
+	"fmt"
+
+	/*
+	   Third-party packages
+	   used in this file
+	*/
+	"github.com/some/pkg"
+)
+`,
+		`package main
+
+import (
+	"fmt"
+
+	/*
+	   Third-party packages
+	   used in this file
+	*/
+	"github.com/some/pkg"
+)
+`,
+	},
+	{
+		"standalone-comment-inline-preserved",
+
+		`sections:
+  - Standard
+  - Default
+`,
+		`package main
+
+import (
+	"fmt" // format package
+	"os"  // os package
+
+	"github.com/some/pkg" // third-party
+)
+`,
+		`package main
+
+import (
+	"fmt" // format package
+	"os"  // os package
+
+	"github.com/some/pkg" // third-party
+)
+`,
+	},
+	{
+		"standalone-comment-multiple-between-groups",
+
+		`sections:
+  - Standard
+  - Default
+`,
+		`package main
+
+import (
+	"fmt"
+
+	// Third-party imports
+	// These are external dependencies
+	"github.com/some/pkg"
+)
+`,
+		`package main
+
+import (
+	"fmt"
+
+	// Third-party imports
+	// These are external dependencies
+	"github.com/some/pkg"
+)
+`,
+	},
+	{
+		"standalone-comment-between-three-sections",
+
+		`sections:
+  - Standard
+  - Default
+  - Prefix(mycompany.com)
+`,
+		`package main
+
+import (
+	"fmt"
+
+	// Third-party imports
+	"github.com/some/pkg"
+
+	// Internal imports
+	"mycompany.com/internal/pkg"
+)
+`,
+		`package main
+
+import (
+	"fmt"
+
+	// Third-party imports
+	"github.com/some/pkg"
+
+	// Internal imports
+	"mycompany.com/internal/pkg"
+)
+`,
+	},
+	{
+		"standalone-comment-with-blank-lines",
+
+		`sections:
+  - Standard
+  - Default
+`,
+		`package main
+
+import (
+	"fmt"
+
+	// Third-party imports
+
+	"github.com/some/pkg"
+)
+`,
+		`package main
+
+import (
+	"fmt"
+
+	// Third-party imports
+
+	"github.com/some/pkg"
+)
+`,
+	},
+	{
+		"standalone-comment-separate-import-decls",
+
+		`sections:
+  - Standard
+  - Default
+`,
+		`package main
+
+import "fmt"
+
+// Standalone line
+
+import "github.com/some/pkg"
+`,
+		`package main
+
+import "fmt"
+
+// Standalone line
+
+import "github.com/some/pkg"
+`,
+	},
+	{
+		"standalone-comment-multiline-block-between-separate-imports",
+
+		`sections:
+  - Standard
+  - Default
+`,
+		`package main
+
+import "fmt"
+
+/* Standalone multi comment
+		 lines */
+
+import "github.com/some/pkg"
+`,
+		`package main
+
+import "fmt"
+
+/* Standalone multi comment
+		 lines */
+
+import "github.com/some/pkg"
+`,
+	},
+	{
+		"standalone-comment-reorder",
+
+		`sections:
+  - Standard
+  - Default
+  - Prefix(mycompany.com)
+`,
+		// Input: imports are in wrong order with standalone comments
+		`package main
+
+import (
+	// Internal imports
+	"mycompany.com/internal/pkg"
+
+	// Third-party
+	"github.com/some/pkg"
+
+	"fmt"
+)
+`,
+		// Output: GCI reorders sections, comments travel with their imports
+		`package main
+
+import (
+	"fmt"
+
+	// Third-party
+	"github.com/some/pkg"
+
+	// Internal imports
+	"mycompany.com/internal/pkg"
+)
+`,
+	},
+	{
+		"standalone-comment-same-section",
+
+		`sections:
+  - Standard
+  - Default
+`,
+		`package main
+
+import (
+	"fmt"
+	// os is needed for file operations
+	"os"
+
+	"github.com/some/pkg"
+)
+`,
+		// The comment should be preserved with the import it's attached to
+		`package main
+
+import (
+	"fmt"
+	// os is needed for file operations
+	"os"
+
+	"github.com/some/pkg"
+)
+`,
+	},
 }

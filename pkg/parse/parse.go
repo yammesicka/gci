@@ -70,6 +70,11 @@ func getImports(imp *ast.ImportSpec) (start, end int, name string) {
 	return
 }
 
+// importDeclRange tracks the byte range of a single import declaration (GenDecl).
+type importDeclRange struct {
+	start, end int
+}
+
 func ParseFile(src []byte, filename string) (ImportList, int, int, int, int, error) {
 	fileSet := token.NewFileSet()
 	f, err := parser.ParseFile(fileSet, filename, src, parser.ParseComments)
@@ -91,6 +96,9 @@ func ParseFile(src []byte, filename string) (ImportList, int, int, int, int, err
 		// cEnd means the end of C import block
 		cEnd int
 		data ImportList
+		// importDecls tracks byte ranges of each non-C import declaration,
+		// used to detect standalone comments between separate import declarations.
+		importDecls []importDeclRange
 	)
 
 	for index, decl := range f.Decls {
@@ -115,6 +123,7 @@ func ParseFile(src []byte, filename string) (ImportList, int, int, int, int, err
 					tailStart = len(src)
 				}
 
+				isCImport := false
 				for _, spec := range genDecl.Specs {
 					imp := spec.(*ast.ImportSpec)
 					// there are only one C import block
@@ -144,6 +153,7 @@ func ParseFile(src []byte, filename string) (ImportList, int, int, int, int, err
 						}
 
 						cEnd = int(decl.End())
+						isCImport = true
 
 						continue
 					}
@@ -157,12 +167,140 @@ func ParseFile(src []byte, filename string) (ImportList, int, int, int, int, err
 						Path:  strings.Trim(imp.Path.Value, `"`),
 					})
 				}
+
+				// Track non-C import declaration ranges for standalone comment detection.
+				if !isCImport {
+					declStart := int(decl.Pos()) - 1
+					declEnd := int(decl.End())
+					if declEnd > len(src) {
+						declEnd = len(src)
+					}
+					importDecls = append(importDecls, importDeclRange{start: declStart, end: declEnd})
+				}
 			}
 		}
 	}
 
+	// If there are multiple separate non-C import declarations, check for
+	// standalone comments between them. If found, skip reformatting to
+	// preserve the original structure and avoid dropping the comments.
+	if len(importDecls) > 1 {
+		if hasCommentBetweenDecls(f.Comments, importDecls, cStart, cEnd) {
+			return nil, 0, 0, 0, 0, CommentBetweenImportsError{}
+		}
+	}
+
+	// Attach standalone comments within the import block to adjacent imports.
+	// This handles comments separated by blank lines from imports, which the
+	// Go AST does not attach as imp.Doc. By extending the byte range of the
+	// adjacent import, the comment is preserved when LoadFormat() copies
+	// src[d.Start:d.End] for each import.
+	attachStandaloneComments(f.Comments, data, headEnd, tailStart, cStart, cEnd)
+
 	sort.Sort(data)
 	return data, headEnd, tailStart, cStart, cEnd, nil
+}
+
+// hasCommentBetweenDecls checks whether any comment group in the AST falls
+// between two separate import declarations (not inside any of them).
+func hasCommentBetweenDecls(comments []*ast.CommentGroup, decls []importDeclRange, cStart, cEnd int) bool {
+	for _, cg := range comments {
+		cgStart := int(cg.Pos()) - 1
+		cgEnd := int(cg.End())
+
+		// Skip comments inside the C import block.
+		if cStart != 0 && cgStart >= cStart && cgEnd <= cEnd {
+			continue
+		}
+
+		// Check if this comment falls between any two consecutive import declarations.
+		// importDecls is in source order because f.Decls is iterated in source order.
+		for i := 0; i < len(decls)-1; i++ {
+			if cgStart >= decls[i].end && cgEnd <= decls[i+1].start {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+// attachStandaloneComments scans all comment groups from the AST and attaches
+// standalone comments (those not already covered by any import's byte range)
+// to the adjacent import by extending its Start or End.
+//
+// A standalone comment is one that falls within the import block boundaries
+// (headEnd..tailStart) but is not covered by any existing GciImports entry.
+// This typically happens when a comment is separated from the next import by
+// a blank line, so the Go AST does not attach it as imp.Doc.
+//
+// The algorithm processes comments in source order. When a comment is attached
+// to the next import by extending its Start, subsequent comments that fall
+// within the now-extended range are automatically detected as "covered" and
+// skipped. This correctly handles multiple consecutive standalone comments
+// before a single import.
+//
+// Known limitation: if a standalone comment labels a section (e.g., "// Third-party imports")
+// and is attached to the first import in that section, sorting within the section may move
+// the comment to a non-first position. This is an inherent limitation of the "extend Start"
+// approach — the comment travels with its attached import during sorting.
+//
+// Note: this function mutates data in place. The covered check for subsequent
+// comments sees the updated Start values, which is essential for correctly
+// handling multiple consecutive standalone comments before a single import.
+func attachStandaloneComments(comments []*ast.CommentGroup, data ImportList, headEnd, tailStart, cStart, cEnd int) {
+	if len(data) == 0 {
+		return
+	}
+
+	// Sort imports by Start position for correct positional lookups.
+	sort.Slice(data, func(i, j int) bool {
+		return data[i].Start < data[j].Start
+	})
+
+	for _, cg := range comments {
+		cgStart := int(cg.Pos()) - 1
+		cgEnd := int(cg.End())
+
+		// Skip comments outside the import block.
+		if cgStart < headEnd || cgEnd > tailStart {
+			continue
+		}
+
+		// Skip comments inside the C import block.
+		if cStart != 0 && cgStart >= cStart && cgEnd <= cEnd {
+			continue
+		}
+
+		// Check if this comment is already covered by an existing import's
+		// byte range (e.g., attached as imp.Doc or imp.Comment by the AST).
+		covered := false
+		for _, imp := range data {
+			if imp.Start <= cgStart && cgEnd <= imp.End {
+				covered = true
+				break
+			}
+		}
+		if covered {
+			continue
+		}
+
+		// This is a standalone comment. Find the next import after it and
+		// extend that import's Start to include the comment bytes.
+		attached := false
+		for _, imp := range data {
+			if imp.Start > cgStart {
+				imp.Start = cgStart
+				attached = true
+				break
+			}
+		}
+
+		if !attached {
+			// Trailing comment after the last import — extend the last
+			// import's End to include it.
+			data[len(data)-1].End = cgEnd
+		}
+	}
 }
 
 // IsGeneratedFileByComment reports whether the source file is generated code.
@@ -196,5 +334,19 @@ func (n NoImportError) Error() string {
 
 func (i NoImportError) Is(err error) bool {
 	_, ok := err.(NoImportError)
+	return ok
+}
+
+// CommentBetweenImportsError is returned when standalone comments exist between
+// separate import declarations. In this case, reformatting would merge the
+// declarations and drop the comments, so we skip formatting entirely.
+type CommentBetweenImportsError struct{}
+
+func (c CommentBetweenImportsError) Error() string {
+	return "standalone comment between separate import declarations"
+}
+
+func (c CommentBetweenImportsError) Is(err error) bool {
+	_, ok := err.(CommentBetweenImportsError)
 	return ok
 }
